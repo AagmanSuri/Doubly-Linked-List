@@ -81,12 +81,33 @@ void Insert(struct Node *p,int index ,int x)
         }
         p->next=t;
     }
+
+}
+void reverse(struct Node *p)
+{
+    struct Node *temp;
+    while(p!=NULL)
+    {
+        temp=p->next;
+        p->next=p->prev;
+        p->prev=temp;
+        p=p->prev;
+        if(p!=NULL && p->next==NULL){//CHANGE
+            first=p;
+        }
+    }
 }
 int main()
 {
     int A[]={1,2,3,4,5};
+    
     create(A, 5);
-    Insert(first, 0, 25);
+    
+    //Insert(first, 0, 25);
+    
+    reverse(first);
+    
     Display(first);
+    
     printf("Length : %d",length(first));
 }
